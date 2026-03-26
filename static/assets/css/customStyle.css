@@ -1,0 +1,115 @@
+ /*  Google fonts online */
+   
+    @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+
+    #hero h2{
+      font-family: 'Dosis';
+    }
+
+    #about h3{
+      font-family: 'Dosis';
+    }
+
+    .content p{
+      font-family: 'Dosis';
+    }
+
+    #about p{
+      font-size: 20px;
+      color: black;
+    }
+
+
+    .text-center h1{
+      font-family: 'Dosis';
+      font-weight: bold;
+    }
+    .text-center img{
+      width: 200px;
+      height: auto;
+      border-radius: 40px !important;
+      padding: 20px;
+    }
+
+    #footer{
+      margin-top: 100px;
+      padding: 15px 30px 0px 30px;
+      
+    }
+
+    #footer p{
+      font-size: 15px;
+    }
+
+    #footer h4{
+      font-family: 'Dosis';
+    } 
+
+    #footer .row strong{
+      font-size: 20px;
+      color: #11CAE6;
+      padding:5px;
+    }
+
+    #footer .row strong:hover{
+      font-size: 25px;
+    }
+
+    /* About page */
+  
+    .about-about{
+        margin-top: 60px;
+    }
+
+    .about-image{
+        height: 450px;
+        width: auto;
+    }
+
+    @media screen and (max-width:720px){
+      .about-image {
+        width: 400px;
+        height: auto;
+      }
+    }
+   
+    /* Team */
+
+    .team{
+      margin-top: 60px;
+      margin-bottom: -100px;
+      font-family: 'Dosis';
+      font-weight: bold;
+    }
+ 
+    .img-thumbnail {
+      padding: .25rem;
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: .25rem;
+      max-width: 100%;
+      height: auto;
+  }
+  
+  .social-link {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      border-radius: 50%;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+  }
+
+  /*  Contact */
+
+  .form-group{
+    padding-bottom: 5px;
+  }
+
+  .form-group textarea {
+    height: 200px;
+  }
