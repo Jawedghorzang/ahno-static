@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Management System Of AHNO</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <style>
+    input,textarea {
+	margin-top: 10px;
+	width: 100%;
+	padding: 0px 20px 0px 20px;
+	}
+	
+    </style>
+
+</head>
+<body>
+
+  
+   
+      <div class="text-center" style="margin-top: 20px;">
+       Welcome <span sec:authentication="name" style="font-size: 22px; color:green;">Username</span> - <span sec:authentication="principal.authorities">Roles</span>
+      </div>
+  
+
+  
+    <a th:href="@{/edit}" style="text-align: center;"> Go to Edit Penal </a>
+
+    <h1 style="text-align: center;color:green;margin-top:30px;"> Documents Uploading </h1>
+     
+
+
+     <form th:action="@{/document/save}" th:object="${document}" method="post" enctype="multipart/form-data"
+      style="max-width: 400px; margin: 0 auto;">
+
+      <input type="file" name="document" id="document" required />
+      <input type="text" name="title" class="form-control" id="title" required placeholder="Title"/>
+	  <input type="submit" class="btn btn-success">
+   	  <p th:text="${doc}" style="color:green; font-size:20px;" class="success"> </p>
+   </form>
+
+
+			<hr>
+
+	  <h1 style="text-align: center;color:green;margin-top:30px;"> News Uploading </h1>
+     
+
+
+     <form th:action="@{/news/save}" th:object="${news}" method="post" enctype="multipart/form-data"
+      style="max-width: 400px; margin: 0 auto;">
+
+      <input type="file" name="news" id="news" required />
+      <input type="text" name="title" class="form-control" placeholder="Title" id="title" required />
+      <textarea class="form-control" required name="description" placeholder="Description of the news" style="height: 150px;"></textarea>
+	  <input type="submit" class="btn btn-success">
+   	  <p th:text="${news}" style="color:green; font-size:20px;"> </p>
+   </form>
+    
+    
+    
+    		<hr>
+
+	  <h1 style="text-align: center;color:green;margin-top:30px;"> Add Sponser </h1>
+     
+
+
+     <form th:action="@{/sponsor/save}" th:object="${sponsor}" method="post" enctype="multipart/form-data"
+      style="max-width: 400px; margin: 0 auto;">
+      <input type="file" name="sponsor" id="sponsor" required />
+	  <input type="submit" class="btn btn-success">
+   	  <p th:text="${sponsor}" style="color:green; font-size:20px;"> </p>
+   </form>
+    
+    
+    		<hr>
+
+	  <h1 style="text-align: center;color:green;margin-top:30px;"> Events Uploading </h1>
+     
+
+
+     <form th:action="@{/events/save}" th:object="${events}" method="post" enctype="multipart/form-data"
+      style="max-width: 400px; margin: 0 auto;">
+
+      <input type="file" name="events" id="events" required />
+      <input type="text" name="title" class="form-control" placeholder="Title" id="title" required />
+      <textarea class="form-control" required name="description" placeholder="Description of the events" style="height: 150px;"></textarea>
+	  <input type="submit" class="btn btn-success">
+   	  <p th:text="${events}" style="color:green; font-size:20px;"> </p>
+   </form>
+    
+    
+    
+</body>
+</html>

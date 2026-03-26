@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> AHNO </title>
+   <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+   <link href="static/assets/css/style.css" rel="stylesheet">  
+   <link href="static/assets/css/customStyle.css" rel="stylesheet">  
+  
+   <style>
+    .paragraph::first-letter {
+  font-size: 200%;
+  color: #555555;
+ 
+}
+   
+   </style>
+</head>
+<body>
+
+
+
+   
+ <header id="header" class="fixed-top d-flex align-items-center header-transparent"  >
+ 
+ <button  class="btn btn-donate btn-primary" style="border-radius: 20px;margin-left: 10px;">Donate</button>
+ 
+
+ 
+    <div class="container d-flex justify-content-between align-items-center">
+    
+    	
+      <div id="logo">
+        <a th:href="/"><img src="static/assets/img/log.jpeg" style="width:auto;height:50px" alt=""></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="index.html">Regna</a></h1>-->
+      </div>
+ 
+      <nav id="navbar" class="navbar" th:fragment="nav-bar">
+      <ul>
+         <li><a class="nav-link scrollto " href="/">Home</a></li>
+         <li><a class="nav-link scrollto" href="about.html">About Us</a></li>
+          <li><a class="nav-link scrollto " href="area.html">Areas of Engagement</a></li>
+          <li><a class="nav-link scrollto" href="team.html">Team</a></li>
+            <li class="dropdown"><a href="#">Project<i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="ongoing_project">Ongoing Project </a></li>
+                  <li><a href="completed_project">Completed Project </a></li>
+                </ul>
+              </li>
+         <li><a class="nav-link scrollto" href="documents.html">Documents</a></li>
+        
+         
+         <li><a class="nav-link scrollto" href="contact.html"><i class="fas fa-share-square"></i>Contact</a></li>
+       </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+ 
+
+
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+   <div class="hero-container">
+     <h1>Welcome to AHNO</h1>
+     <h2>Afghanistan Humanitarian National Organization (AHNO)</h2>
+   </div>
+ </section><!-- End Hero Section -->
+   
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="section-bg">
+    <div class="container-fluid">
+
+
+      <div class="row">
+        <div class="col-lg-6 about-img">
+          <img src="static/assets/img/ahno.jpg" alt="" style="width: 100%;">
+        </div>
+
+        <div class="col-lg-6 content">
+          <h3 style="font-weight: bold;">Afghanistan Humanitarian National Organization (AHNO)</h3>
+
+          <p class="paragraph">
+            The situation in Afghanistan is very critical and there are fears of losing lives.
+             People don’t have enough food, water and shelter in for the upcoming cold winter. 
+             Several international organizations have assessed the situation and declared it a priority for humanitarian Intervention.
+              Severe drought, on-going political conflict and natural
+             disasters including earth-quakes are adding up to the crisis.       
+             
+             Health system crisis is worsened by the Covid-19 and malnutrition cases on the rise.
+              Although the United Nations and some other organizations those are also involved in protection
+              of the human lives in Afghanistan have urged the international community for urgent support and funding recently,
+              coverage of the whole country still seems challenging.      
+              
+               The Afghanistan Humanitarian National Organisation (AHNO), which is a local NGO and have experience in delivery and management of the aid, 
+               tries its best to play role in reaching out to people by mobilizing funds from the organizations and people inside and outside of the country
+               to provide humanitarian and life saving assistance to the Afghan people. We would like to seek your assistance for this saving lives mission by the AHNO. 
+          </p>
+
+          <p>
+            For further information, please contact us via <a href="contact"> contact </a> details listed in this website.
+          </p>
+          
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- End About Section -->
+
+     
+     
+  <div class="text-center">
+       <h1> SPONSORS </h1>     
+	 <img  class="rounded" alt="...">
+  </div>
+ 
+ 	
+          
+   <!--End of SPONSERS-->
+
+
+<div class="container" style="margin-top: 100px;">
+  <!--Section: News of the day-->
+  <section class="border-bottom pb-4 mb-5">
+    <div class="row gx-5">
+      <div class="col-md-6 mb-4">
+        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+          <img />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-4">
+        <span class="badge bg-success px-2 py-1 shadow-1-strong mb-3">Top News</span>
+        <h4 style="font-family: 'Dosis';"> <strong >
+        </strong>
+        </h4>
+        <p class="text-muted"  >
+        
+        </p>
+      </div>
+    </div>
+  </section>
+  <!--Section: News of the day-->
+
+
+
+</div>
+<!--Main layout-->
+
+
+	<div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-size:30px ;">DONATE</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center" style="line-height:1.5" >
+                	<h3 >Bank Accounts in Afghanistan:</h3>
+                	<h3 style="color:#FFD700;"> $ </h3>
+                    <p style="line-height:1.8;color:cadetblue;font-weight: bold;">USD Account No: 0004712004977901 <br>
+                    SWIFT Code: AFIBAFKAXXX            <br>
+                    Bank: AIB Bank</p>
+                </div>
+               <hr>
+               <div class="modal-body text-center" style="line-height:1.5" >
+                	<h3 >Bank Accounts in Afghanistan:</h3>
+                	<h1 style="color:#FFD700;"> ؋ </h1>
+                    <p style="line-height:1.8;color:cadetblue;font-weight: bold;">AF Account No: 0500701004977919 <br>
+                    SWIFT Code: AFIBAFKAXXX            <br>
+                    Bank: AIB Bank</p>
+                </div>
+            </div>
+        </div>
+     </div>
+  </div>
+
+
+   <footer id="footer" th:fragment="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>About AHNO</h4>
+            <p>
+              AHNO is a Non-Governmental, Non-Profit,
+              Non-Political and Non-Sectarian Organization
+              working in Afghanistan  <a href="about">learn more...</a>
+
+              <br> 
+              <br>
+             
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links" style="padding: -20px 0px -20px 0px">
+            <h4>Address</h4> 
+                <p> 
+                  
+                <h6 style="color:rgb(185, 193, 201); font-style: italic;"> House #6 , Gul e Surkh  Square  Front of Salaam University ,
+                   District #4 , Kabul Afghanistan </h6>
+                  
+              </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Contact Us</h4>
+            <strong><img src="static/assets/img/icons/telephone.png" alt="Telephone" style="width: 30px; height: 30px;"></strong>  +93(0)789906066 , +93(0)779697721
+            <br>
+              <strong><img src="static/assets/img/icons/location.png" alt="email" style="width: 30px; height: 30px;"> </strong> info@ahno.org.af  <br>
+              <br>
+              <a href="https://www.linkedin.com/feed/"> <strong> <i class="bi-linkedin"></i> </strong></a>
+              <a href="https://www.facebook.com/profile.php?id=100091640824841">  <strong> <i class="bi-facebook"></i> </strong></a>
+              <a href="https://wa.me/00930789906066?text=Welcome,+To+AHNO."> <strong>   <i class="bi-whatsapp"></i> </strong></a>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <h4>Join <strong style="color:rgb(17, 202, 230); font-size: 30px;">AHNO</strong> Newsletter</h4>
+            
+            <form >
+              <div class="input-group mb-3">
+                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                <div class="input-group-append">
+                <input type="submit" class="btn btn-danger">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="text-center">
+            Copyright &#169;  2023 Afghanistan Humanitarian National Organization (AHNO)
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+      <script src="tatic/assets/js/jquery.js"></script>
+      <script src="static/assets/js/bootstrap.min.js"></script>
+      <script src="static/assets/js/jquery.paroller.min.js"></script>
+      <script src="static/assets/js/main.js"></script>  
+      <script src="static/assets/js/donate.js"></script>  
+
+</body>
+</html>

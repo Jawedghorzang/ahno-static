@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Management System Of AHNO</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <style>
+    input,textarea {
+	margin-top: 10px;
+	width: 100%;
+	padding: 0px 20px 0px 20px;
+	}
+	
+    </style>
+
+</head>
+<body>
+      
+      <div class="container">
+      
+      <div class="text-center" style="margin-top: 20px;">
+       Welcome <span sec:authentication="name" style="font-size: 22px; color:green;">Username</span> - <span sec:authentication="principal.authorities">Roles</span>
+      </div>
+      
+      <div style="text-align:center; margin-top: 30px;">
+     
+      
+       <a th:href="@{/edit}" style="text-align: center;" class="btn btn-success"> Go to Edit Penal </a> 
+        <a th:href="@{/newsleter}" style="text-align: center;" class="btn btn-success"> USER Email </a>  
+        <a th:href="@{/message}" style="text-align: center;" class="btn btn-success"> Message </a>    
+      </div>
+    
+
+    <h1 style="text-align: center;color:green;margin-top:30px;"> Update Documents </h1>
+     
+
+	        	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Size</th>
+      <th scope="col">Date</th>
+      <th scop="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="doc:${getDocuments}">
+      <td th:text="${doc.id}"> </td>
+      <td th:text="${doc.title}" style="font-weight: bold; color:green"> </td>
+      <td>(<span th:text="${doc.size/1024}"/>)KB</td>
+      <td th:text="${doc.date}"> </td>
+      <td> 
+     	<a th:href="@{/document/findById/(id=${doc.getId})}" class="btn btn-primary" id="editButton">Edit<i class="icon_pencil-edit"></i></a>
+     	<a th:href="@{/delete/document/(id=${doc.getId})}"   class="btn btn-danger"    id="deleteButton" >Delete<i class="icon_close_alt2"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ 
+ 			<hr>
+
+		<h1 style="text-align: center;color:green"> News Controll Management System  </h1>
+             
+                     	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scop="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="nw:${news}">
+      <td th:text="${nw.title}" style="font-weight: bold; color:green"> </td>
+      <td th:text="${nw.description}"> </td>
+      <td> 
+      	<a th:href="@{/news/findById/(id=${nw.getId})}" class="btn btn-primary" id="newsEditButton">Edit<i class="icon_pencil-edit"></i></a>
+     	<a th:href="@{/delete/news/(id=${nw.id})}" class="btn btn-danger"    id="deleteButton"  sec:authorize="hasAnyAuthority('ADMIN')">Delete<i class="icon_close_alt2"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<hr>
+
+		<h1 style="text-align: center;color:green"> Sponsor Controll Management System  </h1>
+             
+                     	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Thumbnail</th>
+      <th scop="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="sponsor:${sponsors}">
+      <td> <img th:src="${sponsor.logoUrlPath}" style="width: 150px; height: auto;"> </td>
+      <td> 
+     	<a th:href="@{/delete/sponsor/(id=${sponsor.id})}" class="btn btn-danger"    id="deleteButton"  sec:authorize="hasAnyAuthority('ADMIN')">Delete<i class="icon_close_alt2"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+		
+		
+		<h1 style="text-align: center;color:green"> Events Controll Management System  </h1>
+             
+                     	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scop="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="event:${events}">
+      <td th:text="${event.title}" style="font-weight: bold; color:green"> </td>
+      <td th:text="${event.description}"> </td>
+      <td> 
+      	<a th:href="@{/event/findById/(id=${event.getId})}" class="btn btn-primary" id="eventEditButton">Edit<i class="icon_pencil-edit"></i></a>
+     	<a th:href="@{/delete/event/(id=${event.id})}" class="btn btn-danger"    id="deleteButton"  sec:authorize="hasAnyAuthority('ADMIN')">Delete<i class="icon_close_alt2"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+ <!-------------------- --------------------------------------------------------------------- >
+ 
+ 
+ 
+ 
+			<!-- Documents Editing -->    
+   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/update/document}" method="GET">
+        
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">ID:</label>
+            <input type="text" class="form-control" id="id" name="id" readonly="readonly">
+          </div>
+        
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+          
+              
+          
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Size:</label>
+            <input type="text" class="form-control" id="size" name="size" readonly="readonly">
+           </div>
+          
+          
+          <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+         </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit State End -->
+
+		
+		<!-- News Editing -->    
+   <div class="modal fade" id="newsEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="news">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/update/news}" method="GET">
+        
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">ID:</label>
+            <input type="text" class="form-control" id="n_id" name="id" readonly="readonly">
+          </div>
+        
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="n_title" name="title">
+          </div>
+          
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Description:</label>
+            <textarea type="text" style="height: 200px;" class="form-control" id="description" name="description"> </textarea>
+	
+          </div>
+              
+          
+          <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+         </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit State End -->
+
+
+
+  <!-- Event Edit -- >
+  
+  		<!-- News Editing -->    
+   <div class="modal fade" id="eventEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="event">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/update/event}" method="GET">
+        
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">ID:</label>
+            <input type="text" class="form-control" id="e_id" name="id" readonly="readonly">
+          </div>
+        
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="e_title" name="title">
+          </div>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" id="img" name="imagesUrl" hidden>
+          </div>
+          
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Description:</label>
+            <textarea type="text" style="height: 200px;" class="form-control" id="e_description" name="description"> </textarea>
+          </div>
+              
+          
+          <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+         </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit State End -->
+
+
+			
+
+       <!-- Start Delete  Record -->
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this records?</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="confirmDeleteButton" href="">Delete</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+   
+    <script src="assets/js/jquery.js"></script>	
+ 	<script src="assets/js/bootstrap.min.js"></script>
+     <script src="assets/js/edit.js"></script>  
+</body>
+</html>

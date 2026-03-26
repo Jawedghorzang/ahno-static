@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/customStyle.css" rel="stylesheet">
+   <link href="assets/css/style.css" rel="stylesheet">
+	
+
+</head>
+<body style="background-color: dimgray;" onload = "welcomeFunction()">
+
+ 			
+
+    
+             <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+  
+  <button  class="btn btn-donate btn-primary" style="border-radius: 20px;margin-left: 10px;">Donate</button>
+  
+    <div class="container d-flex justify-content-between align-items-center">
+ 
+      <div id="logo">
+        <a th:href="@{/}"><img src="assets/img/log.jpeg" style="width:auto;height:50px" alt=""></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="index.html">Regna</a></h1>-->
+      </div>
+ 
+     <nav th:replace="index :: nav-bar"></nav>
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <section id="about" class="section-bg team">
+    <div class="container-fluid">
+
+      <div class="text-center" style="margin-top: -30px; margin-bottom: 100px; color: tomato;">
+        <h1 > Contact  Us</h1>
+      </div>
+  
+  <div class="container">
+    <div class="row text-center">
+    
+      <table class="table table-striped">
+
+        <tbody>
+          <tr>
+            <th scope="row" > <h4 style="font-weight: bold; font-family: 'Dosis';">Main Office</h4></th>
+            <td> House # 6<br> Opposite of Salaam University<br> Gul E Surkh Square<br> PD #4<br> Kabul </td>   
+          </tr>
+
+          <tr>
+            <th scope="row"> <h4 style="font-weight: bold; font-family: 'Dosis';">General Director  </h4></th> 
+                 
+            <td> <h4> Dr.Jundullah Nabeel</h4>
+              +93(0)781144990 <br>
+                +93(0)779697721 <br>
+
+                 gd@ahno.org.af <br>
+                dr.jundullah@gmail.com <br>
+
+               </td>   
+          </tr>
+
+
+
+          <tr>
+            <th scope="row"> <h4 style="font-weight: bold; font-family: 'Dosis';"> Contact Persons In EUROP</h4>  <br> 
+                 </th>
+            <td> 
+              <h4> Eng. Abdulqudus Bayan</h4>
+              Abdulqudusbayan@gmail.com 
+
+            </td>   
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+    <!-- end row -->
+
+
+     <div class="container">
+     
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1558.4050394244491!2d69.14282113966813!3d34.547422682566726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2s!4v1683357067936!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div><!-- end col -->
+
+      <!-- Contact form -->
+      <div class="col-sm-6">
+        <form  th:action="@{/addmessage}" method="post" class="form-main" name="register">
+
+          <div class="form-group">
+            <input class="form-control" type="text" required  placeholder="Subject" name="subject" id="subject">
+          </div> <!-- /Form-name -->
+
+          <div class="form-group">
+            <input class="form-control" type="email" placeholder="Email" required  name="email" id="email">
+          </div> <!-- /Form-email -->
+
+          <div class="form-group">
+            <textarea class="form-control" placeholder = "Leave Your Message" required  name="messages" id="messages"></textarea>
+          </div> <!-- /col -->
+				
+                    
+          <div class="row">            
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send" onclick="myFunction()">Submit</button>
+              <div id="succcessful" th:if="${success}" th:text="${success}" class="alert-success"/>
+            </div> <!-- /col -->
+          </div> <!-- /row -->
+          
+          
+            </form> <!-- /form -->
+      </div> <!-- end col -->
+              
+          
+          <script  th:inline="javascript">
+    function myFunction() {
+	
+
+	
+  
+		 var subject = document.forms["register"]["subject"].value;
+		 var email = document.forms["register"]["email"].value;
+		 var message = document.forms["register"]["messages"].value;
+		
+		 
+		  if (subject == null || subject == ""  || email == null || email ==  "" || message == null || message == "") {
+         return false;
+      }
+      
+      else{
+		
+		alert("Your message has been sent successfully!");
+		
+      }
+      
+    }
+
+    
+       </script>
+
+         
+                    
+    </div> <!-- end row -->
+        
+     </div>
+    </div>
+  </section>
+
+
+
+  <footer id="footer" th:replace="index :: footer">
+ 
+  </footer>
+  			 <div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+  
+ 
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-size:30px ;">DONATE</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center" style="line-height:1.5" >
+                	<h3 >Bank Accounts in Afghanistan:</h3>
+                	<h3 style="color:#FFD700;"> $ </h3>
+                    <p style="line-height:1.8;color:cadetblue;font-weight: bold;">USD Account No: 0079381200702893 <br>
+                    SWIFT Code: ADFJDDJDLJRO            <br>
+                    Bank: AIB Bank</p>
+                </div>
+               <hr>
+               <div class="modal-body text-center" style="line-height:1.5" >
+                	<h3 >Bank Accounts in Afghanistan:</h3>
+                	<h1 style="color:#FFD700;"> ؋ </h1>
+                    <p style="line-height:1.8;color:cadetblue;font-weight: bold;">AF Account No: 0079381200702893 <br>
+                    SWIFT Code: ADFJDDJDLJRO            <br>
+                    Bank: AIB Bank</p>
+                </div>
+            </div>
+        </div>
+     </div>
+  </div>
+  
+   
+      <script src="assets/js/jquery.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/main.js"></script>  
+      <script src="assets/js/donate.js"></script>  
+  
+</body>
+</html>

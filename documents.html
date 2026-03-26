@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Documents</title>
+     
+     
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/css/customStyle.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        
+       
+        <style>
+          .documents{
+            background-image: linear-gradient(to right, #622F5F,#F5992C);
+            clip-path: polygon(0 0, 100% 0%, 100% 63%, 0 100%);
+            width: 100%;
+            height: 300px;
+            margin-left: 0px;
+            padding-top: 20px;
+            margin-bottom: 0px;
+            color: aliceblue;
+          }
+        </style>
+
+
+     
+     </head>
+<body style="background-color: rgb(24, 25, 27);">
+    
+        <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+  <button  class="btn btn-donate btn-primary" style="border-radius: 20px;margin-left: 10px;">Donate</button>
+    <div class="container d-flex justify-content-between align-items-center">
+ 
+      <div id="logo">
+        <a th:href="@{/}"><img src="assets/img/log.jpeg" style="width:auto;height:50px" alt=""></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="index.html">Regna</a></h1>-->
+      </div>
+ 
+      <nav id="navbar" class="navbar" th:replace="index :: nav-bar">
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+ 
+
+  <div class="text-center documents team">
+    <h1>Documents</h1>
+    <h3>
+      You can download documents related to the AHNO
+    </h3>
+
+  </div>
+
+  <section id="about" class="section-bg" style="margin: -112px 0px -100px 0px; padding-top: 150px !important;">
+
+    <div class="container-fluid">
+
+        <div class="container table-responsive-md">
+            
+          <table class="table table-striped" style="font-family: Arial, Helvetica, sans-serif;">
+            
+            <tbody>
+
+              <thead>
+                <tr style="font-size: 20px;">
+       
+                  <th scope="col">Title</th>
+                  <th scope="col>">Size</th>
+                  <th scope="col">Download</th>
+                </tr>
+              </thead>
+
+              <tr  th:each="doc:${documents}">
+                <td th:text="${doc.getTitle}"> </td>
+                <td>(<span th:text="${doc.size/1024}"/>)KB </td>
+                <td>
+               <a th:href="@{/file/(title=${doc.getTitle},id=${doc.getId})}">
+                   <img src="assets/img/icons/pdf.png" th:alt="${doc.getTitle}" style="width: 50px; height:50px"/></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+            </div>
+          </div>
+
+    </div>
+  </section>
+
+<footer id="footer" th:replace="index :: footer">
+
+  </footer>
+
+   <div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+  
+ 
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-size:30px ;">DONATE</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center" style="line-height:1.5" >
+                	<h3 >Bank Accounts in Afghanistan:</h3>
+                	<h3 style="color:#FFD700;"> $ </h3>
+                    <p style="line-height:1.8;color:cadetblue;font-weight: bold;">USD Account No: 0079381200702893 <br>
+                    SWIFT Code: ADFJDDJDLJRO            <br>
+                    Bank: AIB Bank</p>
+                </div>
+               <hr>
+               <div class="modal-body text-center" style="line-height:1.5" >
+                	<h3 >Bank Accounts in Afghanistan:</h3>
+                	<h1 style="color:#FFD700;"> ؋ </h1>
+                    <p style="line-height:1.8;color:cadetblue;font-weight: bold;">AF Account No: 0079381200702893 <br>
+                    SWIFT Code: ADFJDDJDLJRO            <br>
+                    Bank: AIB Bank</p>
+                </div>
+            </div>
+        </div>
+     </div>
+  </div>
+
+
+	   
+      <script src="assets/js/jquery.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/main.js"></script>  
+      <script src="assets/js/donate.js"></script>  
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Management System Of AHNO</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <style>
+    input,textarea {
+	margin-top: 10px;
+	width: 100%;
+	padding: 0px 20px 0px 20px;
+	}
+	
+    </style>
+
+</head>
+<body>
+<title> GET USER  Emails </title>
+
+</head>
+<body>
+
+	  <div class="container">
+	   <div class="text-center" style="margin-top: 20px;">
+       Welcome <span sec:authentication="name" style="font-size: 22px; color:green;">Username</span> - <span sec:authentication="principal.authorities">Roles</span>
+      </div>
+      
+      <div style="text-align:center; margin-top: 30px;">
+      
+       <a th:href="@{/edit}" style="text-align: center;" class="btn btn-success"> Go to Edit Penal </a> 
+        <a th:href="@{/newsleter}" style="text-align: center;" class="btn btn-success"> USER Email </a>  
+        <a th:href="@{/message}" style="text-align: center;" class="btn btn-success"> Message </a>    
+      </div>
+      
+	 </div>
+
+     <h1 style="text-align: center; margin-top:30px;"> GET USER EMAILS </h1>
+   <div class="container">
+ 		
+	        	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="ms:${getEmail}">
+      <td th:text="${ms.email}" style="font-weight: bold; color:green"> </td>
+    </tr>
+  </tbody>
+</table>
+ 	
+ 			
+ 		</div>	
+ 		 
+</body>
+</html>
